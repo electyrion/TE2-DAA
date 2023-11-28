@@ -1,4 +1,4 @@
-# Set-Cover-problem-solution-Python by: Andrea Rubbi
+# Set Cover Problem Solution Python
 
 Python implementation of the 'Greedy' and 'Branch and Bound' algorithms to resolve the Set Cover problem
 
