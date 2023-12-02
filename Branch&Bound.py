@@ -1,7 +1,7 @@
 __author__ = "Vicky Maulana, taken from Andrea Rubbi"
 import time
 
-def bypassBranch(subset, i): #bypass a branch 
+def bypassBranch(subset, i): # bypass a branch 
     for j in range(i-1, -1, -1):
         if subset[j] == 0:
             subset[j] = 1
@@ -28,24 +28,24 @@ def BB(universe,sets,costs):
     i = 1
 
     while i > 0:
-
         if i < len(sets):
             cost, tSet = 0, set() # t for temporary
             for k in range(i):
-                cost += subset[k]*costs[k] #if 1 adds the cost to total
-                if subset[k] == 1: tSet.update(set(sets[k])) #if 1 add the set to the cover
+                cost += subset[k]*costs[k] # if 1 adds the cost to total
+                if subset[k] == 1: tSet.update(set(sets[k])) # if 1 add the set to the cover
 
-            if cost > bestCost: #if the cost is larger than the currently best one, no need of further investigation
+            if cost > bestCost: # if the cost is larger than the currently best one, no need of further investigation
                 subset, i = bypassBranch(subset, i)
                 continue
             for k in range(i, len(sets)): tSet.update(set(sets[k]))
-            if tSet != universe:#that means that the set was essential at this point to complete the uni.
+
+            if tSet != universe: # that means that the set was essential at this point to complete the uni.
                 subset, i = bypassBranch(subset, i)
             else:
                 subset, i = nextVertex(subset, i, len(sets))
                 
         else:
-            cost, fSet = 0, set()# f for final
+            cost, fSet = 0, set() # f for final
             for k in range(i):
                 cost += subset[k]*costs[k]
                 if subset[k] == 1: fSet.update(set(sets[k]))
@@ -66,9 +66,11 @@ def main(a,b,c,z=time.time()):
     cost = X[0]
     sets = X[1]
     cover = []
+
     for x in range(len(sets)):
         if sets[x] == 1:
             cover.append(S[x])
+
     print('covering sets:', cover, '\n', 'total cost:', cost, '$')
     print('time:',time.time()-z)
     print('---------------------------')

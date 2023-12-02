@@ -2,13 +2,16 @@ __author__ = "Vicky Maulana, taken from Andrea Rubbi"
 import time
 
 
-def set_cover(universe, subsets,costs):
+def set_cover(universe, subsets, costs):
     cost = 0
     elements = set(e for s in subsets for e in s)
+    
     if elements != universe:
         return None
+    
     covered = set()
     cover = []
+
     while covered != elements:
         subset = max(subsets, key = lambda s: len(s - covered)/costs[subsets.index(s)])
         cover.append(subset)
