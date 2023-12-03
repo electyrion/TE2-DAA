@@ -124,18 +124,14 @@ def readFromFile(fileName):
     f.close()
     return [m, S, P]
 
+def main():
+    smallData = generateSmall()
+    mediumData = generateMedium()
+    largeData = generateLarge()
+
+    saveToFile(smallData, 'dataset/small.txt')
+    saveToFile(mediumData, 'dataset/medium.txt')
+    saveToFile(largeData, 'dataset/large.txt')
+
 if __name__ == '__main__':
-    res = readFromFile('test.txt')
-    print(res[0])
-    print(res[1])
-    print(res[2])
-    
-    # res = generateSmall()
-    # res = generateMedium()
-    # res = generateLarge()
-    # print(res[0])
-    # print(res[1])
-    # print(res[2])
-    # saveToFile(res, 'test.txt')
-    # print(len(res[1]))
-    # print(len(res[2]))
+    main()
