@@ -1,6 +1,4 @@
 import os
-import io
-import sys
 import random
 
 
@@ -8,13 +6,18 @@ def generateSmall():
     size = 20
     S = []
     P = []
-    m = random.randint(1, 100)
+    m = 20
+    counter = 1
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(1, 5)
+        subsetSize = random.randint(1, 10)
         for j in range(subsetSize):
-            temp.append(random.randint(1, m))
+            if j == 0 and counter <= m:
+                temp.append(counter)
+                counter += 1
+            else:
+                temp.append(random.randint(1, m))
         S.append(temp)
 
     for i in range(size):
@@ -26,17 +29,23 @@ def generateMedium():
     size = 200
     S = []
     P = []
-    m = random.randint(1, 100)
+    m = 15
+    counter = 1
 
     for i in range(size):
         temp = []
         subsetSize = random.randint(1, 10)
         for j in range(subsetSize):
-            temp.append(random.randint(1, m))
+            if j == 0 and counter <= m:
+                temp.append(counter)
+                counter += 1
+            else:
+                temp.append(random.randint(1, m))
         S.append(temp)
+    
 
     for i in range(size):
-        P.append(random.randint(1, 100))
+        P.append(random.randint(10, 100))
     
     return [m, S, P]
 
@@ -44,17 +53,23 @@ def generateLarge():
     size = 2000
     S = []
     P = []
-    m = random.randint(1, 100)
+    m = 10
+    counter = 1
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(1, 100)
+        subsetSize = random.randint(5, 10)
         for j in range(subsetSize):
-            temp.append(random.randint(1, m))
+            if j == 0 and counter <= m:
+                temp.append(counter)
+                counter += 1
+            else:
+                temp.append(random.randint(1, m))
         S.append(temp)
+    
 
     for i in range(size):
-        P.append(random.randint(1, 100))
+        P.append(random.randint(10, 100))
     
     return [m, S, P]
 
@@ -75,7 +90,6 @@ def saveToFile(arr, fileName):
         # delete the last space
         f.seek(f.tell() - 1, os.SEEK_SET)
 
-
         f.write('\n')
         f.write('[')
         for i in range(len(P)):
@@ -87,7 +101,7 @@ def saveToFile(arr, fileName):
         f.write('\n')
 
 def readFromFile(fileName):
-    with open('test.txt', 'r') as f:
+    with open(fileName, 'r') as f:
         m = int(f.readline())
         S = []
         P = []
