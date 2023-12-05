@@ -3,22 +3,22 @@ import random
 
 
 def generateSmall():
-    size = 20
+    size = 50
     S = []
     P = []
     m = 20
-    counter = 1
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(1, 10)
+        subsetSize = random.randint(1, m)
         for j in range(subsetSize):
-            if j == 0 and counter <= m:
-                temp.append(counter)
-                counter += 1
-            else:
-                temp.append(random.randint(1, m))
+            temp.append(random.randint(1, m))
         S.append(temp)
+
+    # make sure 1 to m are in the subsets
+    for i in range(1,m+1):
+        for j in range(random.randint(1, size)):
+            S[j].append(i)
 
     for i in range(size):
         P.append(random.randint(1, 100))
@@ -26,50 +26,48 @@ def generateSmall():
     return [m, S, P]
 
 def generateMedium():
-    size = 200
+    size = 50
     S = []
     P = []
-    m = 15
-    counter = 1
+    m = 200
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(1, 10)
+        subsetSize = random.randint(1, m)
         for j in range(subsetSize):
-            if j == 0 and counter <= m:
-                temp.append(counter)
-                counter += 1
-            else:
-                temp.append(random.randint(1, m))
+            temp.append(random.randint(1, m))
         S.append(temp)
-    
 
+    # make sure 1 to m are in the subsets
+    for i in range(1,m+1):
+        for j in range(random.randint(1, size)):
+            S[j].append(i)
+    
     for i in range(size):
-        P.append(random.randint(10, 100))
+        P.append(random.randint(1, 100))
     
     return [m, S, P]
 
 def generateLarge():
-    size = 2000
+    size = 50
     S = []
     P = []
-    m = 10
-    counter = 1
+    m = 2000
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(10, 20)
+        subsetSize = random.randint(1, m)
         for j in range(subsetSize):
-            if j == 0 and counter <= m:
-                temp.append(counter)
-                counter += 1
-            else:
-                temp.append(random.randint(1, m))
+            temp.append(random.randint(1, m))
         S.append(temp)
     
+    # make sure 1 to m are in the subsets
+    for i in range(1,m+1):
+        for j in range(random.randint(1, size)):
+            S[j].append(i)
 
     for i in range(size):
-        P.append(random.randint(10, 100))
+        P.append(random.randint(1, 100))
     
     return [m, S, P]
 
