@@ -58,7 +58,7 @@ def generateLarge():
 
     for i in range(size):
         temp = []
-        subsetSize = random.randint(5, 10)
+        subsetSize = random.randint(10, 20)
         for j in range(subsetSize):
             if j == 0 and counter <= m:
                 temp.append(counter)
