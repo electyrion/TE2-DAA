@@ -4,7 +4,7 @@ import DatasetGenerator
 
 def main():
     # Generate a dataset
-    DatasetGenerator.main()
+    # DatasetGenerator.main()
     
     # Read the dataset from the file
     [m, S, P] = DatasetGenerator.readFromFile('dataset/large.txt')
