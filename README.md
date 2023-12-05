@@ -2,4 +2,7 @@
 
 Python implementation of the 'Greedy' and 'Branch and Bound' algorithms to resolve the Set Cover problem
 
-## NB: this was part of a university project. Please read the PDF for all the information
+Nama: Muhammad Vicky Maulana
+NPM: 2106750906
+Kelas: DAA-A
+Kode Asdos: 3
