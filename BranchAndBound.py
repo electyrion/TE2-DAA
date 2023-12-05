@@ -1,5 +1,6 @@
 __author__ = "Vicky Maulana, taken from Andrea Rubbi"
 import time
+import DatasetGenerator
 
 def bypassBranch(subset, i): # bypass a branch 
     for j in range(i-1, -1, -1):
@@ -57,44 +58,6 @@ def BB(universe,sets,costs):
 
     return bestCost, bestSubset
 
-def readFromFile(fileName):
-    with open(fileName, 'r') as f:
-        m = int(f.readline())
-        S = []
-        P = []
-        temp = f.readline()
-        for i in range(len(temp)):
-            if temp[i] == '[':
-                subset = []
-                j = i + 1
-                tempStr = ''
-                while j < len(temp) and temp[j] != ']':
-                    if temp[j] != ',' and temp[j] != ' ': 
-                        tempStr += temp[j]
-                    elif temp[j] == ',' or temp[j] == ']':
-                        if tempStr != '':
-                            subset.append(int(tempStr))
-                        tempStr = ''
-                    j += 1
-                subset.append(int(tempStr))
-                S.append(subset)
-        temp = f.readline()
-        for i in range(len(temp)):
-            if temp[i] == '[':
-                j = i + 1
-                tempStr = ''
-                while j < len(temp) and temp[j] != ']':
-                    if temp[j] != ',' and temp[j] != ' ': 
-                        tempStr += temp[j]
-                    elif temp[j] == ',' or temp[j] == ']':
-                        if tempStr != '':
-                            P.append(int(tempStr))
-                        tempStr = ''
-                    j += 1
-                P.append(int(tempStr))
-    f.close()
-    return [m, S, P]
-
 def main(a,b,c,z=time.time()):
     m = a
     S = b 
@@ -134,7 +97,7 @@ S5 = [[2, 3, 4, 8, 9, 10, 11, 12, 15, 16, 18, 19, 22, 23, 24, 26, 27, 28, 29], [
 P5 = [60, 79, 49, 65, 88, 83, 38, 44, 54, 100, 65, 53, 43, 73, 63, 35, 65, 92, 74, 79, 67, 34, 95]
 
 if __name__ == '__main__':
-    data = readFromFile('dataset/small.txt')
+    data = DatasetGenerator.readFromFile('dataset/large.txt')
     m = data[0]
     S = data[1]
     P = data[2]
