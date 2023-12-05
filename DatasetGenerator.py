@@ -49,7 +49,7 @@ def generateMedium():
     return [m, S, P]
 
 def generateLarge():
-    size = 50
+    size = 30
     S = []
     P = []
     m = 2000
